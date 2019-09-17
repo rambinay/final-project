@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>  industrial monitoring and automation</title>
+	<style type="text/css">
+		body{
+	font-family: "Montserrat", sans-serif;
+}
+.container{
+	width: 1340px;
+	margin: 0px auto;
+}
+header{
+	margin: 0px auto;
+	width: 1340px;
+	text-align: center;
+	font-size: 48px;
+	margin-bottom: 1em;
+
+}
+b{
+	font-size: 48px;
+	font-family: ' Time New Roman';
+	text-shadow: 3px 2px blue;
+}
+.temperature{
+	width: 570px;
+	/*background: #cd0;*/
+	height: auto;
+	float: left;
+}
+img{
+	margin-left: auto;
+	margin-right: auto;
+	display: block
+}
+.pulse_rate{
+	width: 570px;
+	/*background: #0de;*/
+	height: auto;
+	float: left;
+}
+.LPG_gas{
+	width: 570px;
+	/*background: #0de;*/
+	height: auto;
+	float: left;
+}
+.LPG_gas1{
+	width: 570px;
+	/*background: #0de;*/
+	height: auto;
+	float: left;
+}
+img{
+	margin-top: 2em;
+}
+p{
+	text-align: center;
+	font-size: 24px;
+}
+.values{
+	padding-top: 1em;
+}
+footer{
+	margin: 0px auto;
+	width: 1240px;
+	text-align: center;
+	font-weight: bold;
+	background:  black /*#cdcdabc*/;
+	margin-top: 1em;
+	min-height: 4.2em;
+}
+span{
+	padding-top: 50%;
+	text-shadow: 1px 1px white;
+}
+@media screen and (max-width: 1240px){
+	.container{
+		width: 100%;
+	}
+	header{
+		width: 100%;
+	}
+	img{
+		max-width: 50%;
+		max-height: auto;
+	}
+	.temperature{
+		width: 50%;
+	}
+	.pulse_rate{
+		width: 50%;
+	}
+	footer{
+		width: 100%;
+	}
+}
+@media screen and (max-width: 640px){
+	header{
+		width: 100%;
+	}
+	.temperature{
+		width: 100%;
+	}
+	.pulse_rate{
+		width: 100%;
+	}
+	footer{
+		width: 100%;
+	}
+}
+@media screen and (max-width: 320px){
+	.container{
+		width: 320px;
+	}
+}
+	</style>
+	<meta http-equiv="refresh" content="20">
+	<link href='https://fonts.googleapis.com/css?family=Alfa Slab One' rel='stylesheet'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body >
+	<header class="jumbotron"><b>IOT based industrial monitoring and automation</b></header>
+	<div class="container">
+
+			<div class="temperature">
+				<img src="{{url_for('static',filename='dht.jpg')}}" width="200" height="200">
+				
+				<p class="values">Temperature: {{tempr}}°F</p>
+				<p class="values">humidity: {{humr}}</p>
+
+			</div>
+			<div class="pulse_rate">
+				<img src="{{url_for('static',filename='industrial fire.jpg')}}" width="200" height="200" >
+				
+				<p class="values">Fire status: {{fire}} </p>
+			</div>
+			<div class="LPG_gas">
+				<img src="{{url_for('static',filename='MQ6 lpg gas.jpg')}}" width="200" height="200">
+				<p class="values">LPG status:{{lpg}} </p>
+				
+			</div>
+
+		<!--	<div class="LPG_gas1">
+				<img src="{{url_for('static',filename='MQ6 lpg gas.jpg')}}" height="200">
+				<p class="values">Pulse Rate: beats/min</p>-->
+				
+			</div>
+
+	</div>
+	<footer><span>072/BEX/20, 34, 35, 36</span></footer>
+</body>
+</html>
