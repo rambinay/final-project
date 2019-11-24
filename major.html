@@ -23,7 +23,7 @@ b{
 	font-family: ' Time New Roman';
 	text-shadow: 3px 2px blue;
 }
-.temperature{
+.LPG_gas{
 	width: 570px;
 	/*background: #cd0;*/
 	height: auto;
@@ -34,13 +34,7 @@ img{
 	margin-right: auto;
 	display: block
 }
-.pulse_rate{
-	width: 570px;
-	/*background: #0de;*/
-	height: auto;
-	float: left;
-}
-.LPG_gas{
+.Fire_status{
 	width: 570px;
 	/*background: #0de;*/
 	height: auto;
@@ -75,6 +69,17 @@ span{
 	padding-top: 50%;
 	text-shadow: 1px 1px white;
 }
+
+.blink {
+  animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 1240px){
 	.container{
 		width: 100%;
@@ -86,10 +91,10 @@ span{
 		max-width: 50%;
 		max-height: auto;
 	}
-	.temperature{
+	.LPG_gas{
 		width: 50%;
 	}
-	.pulse_rate{
+	.Fire_status{
 		width: 50%;
 	}
 	footer{
@@ -100,7 +105,7 @@ span{
 	header{
 		width: 100%;
 	}
-	.temperature{
+	.LPG_gas{
 		width: 100%;
 	}
 	.pulse_rate{
@@ -128,23 +133,44 @@ span{
 	<header class="jumbotron"><b>IOT based industrial monitoring and automation</b></header>
 	<div class="container">
 
-			<div class="temperature">
-				<img src="{{url_for('static',filename='dht.jpg')}}" width="200" height="200">
+			<div class="LPG_gas">
+				<img src="{{url_for('static',filename='MQ6 lpg gas.jpg')}}" width="200" height="200">
 				
-				<p class="values">Temperature: {{tempr}}°F</p>
-				<p class="values">humidity: {{humr}}</p>
+				<p class="values">LPG status:{{lpg}} </p>
+				{% if lpg>120  %}
+				  <p class="blink alert alert-danger" role="alert">Gas Leakage</p>
+				  {% else %}
+				  <p class="alert alert-secondary" role="alert">No Leakage</p>
+				  {% endif %}
 
 			</div>
-			<div class="pulse_rate">
+			<div class="Fire_status">
 				<img src="{{url_for('static',filename='industrial fire.jpg')}}" width="200" height="200" >
 				
 				<p class="values">Fire status: {{fire}} </p>
+				{% if fire>300 %}
+				  <p class="alert alert-secondary" role="alert">No Fire</p>
+
+				  {% else %}
+				  <p class="blink alert alert-danger" role="alert">Fire Detected</p>
+				  {% endif %}
 			</div>
-			<div class="LPG_gas">
-				<img src="{{url_for('static',filename='MQ6 lpg gas.jpg')}}" width="200" height="200">
-				<p class="values">LPG status:{{lpg}} </p>
-				
+
+
+		<!--edit start from here -->
+		 <div class="alcohol_status">
+				<img src="{{url_for('static',filename='alcohol.jpg')}}" width="200" height="200" >
+
+				<p class="values">alcohol status: {{alcohol}} </p>
+				{% if alcohol >200 %}
+				  <p class="alert alert-danger blink" role="alert">employee drunk</p>
+
+				  {% else %}
+			 <p class="alert alert-secondary" role="alert">employee is not drunk</p>
+				  {% endif %}
 			</div>
+
+		<!-- edit stop here -->
 
 		<!--	<div class="LPG_gas1">
 				<img src="{{url_for('static',filename='MQ6 lpg gas.jpg')}}" height="200">
